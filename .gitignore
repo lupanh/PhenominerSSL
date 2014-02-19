@@ -8,6 +8,7 @@ target/
 docs/
 bin/
 corpus/
+data/mapping
 # Package Files #
 *.jar
 *.war
