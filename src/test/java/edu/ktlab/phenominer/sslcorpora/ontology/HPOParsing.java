@@ -1,4 +1,4 @@
-package edu.ktlab.phenominer.ssl.ontology;
+package edu.ktlab.phenominer.sslcorpora.ontology;
 
 import java.util.Iterator;
 
@@ -6,6 +6,8 @@ import org.obolibrary.oboformat.model.Clause;
 import org.obolibrary.oboformat.model.Frame;
 import org.obolibrary.oboformat.model.OBODoc;
 import org.obolibrary.oboformat.parser.OBOFormatConstants.OboFormatTag;
+
+import edu.ktlab.phenominer.sslcorpora.ontology.OBOParser;
 
 public class HPOParsing {
 	static String oboFile = "data/ontology/hp.18-02-14.obo";

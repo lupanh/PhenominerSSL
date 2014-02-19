@@ -1,4 +1,4 @@
-package edu.ktlab.phenominer.ssl.ontology;
+package edu.ktlab.phenominer.sslcorpora.ontology;
 
 import java.io.BufferedReader;
 import java.io.File;
