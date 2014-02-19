@@ -7,15 +7,15 @@ public class Pair<T1, T2> implements Comparable<Pair<T1, T2>> {
 	T1 first;
 	T2 second;
 	String label;
-	
+
 	public Pair() {
 	}
 
 	public Pair(T1 first, T2 second) {
 		this.first = first;
-		this.second = second;		
+		this.second = second;
 	}
-	
+
 	public Pair(T1 first, T2 second, String label) {
 		this.first = first;
 		this.second = second;
@@ -50,7 +50,7 @@ public class Pair<T1, T2> implements Comparable<Pair<T1, T2>> {
 	public String toString() {
 		return "(" + first + "," + second + ")[" + label + "]";
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
