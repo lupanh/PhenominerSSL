@@ -6,11 +6,12 @@ package edu.ktlab.phenominer.sslcorpora.matching;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LongestMatching {
-	HashMap<String, String> dictionary = new HashMap<String, String>();
+	Map<String, String> dictionary = new HashMap<String, String>();
 
-	public LongestMatching(HashMap<String, String> dictionary) {
+	public LongestMatching(Map<String, String> dictionary) {
 		this.dictionary = dictionary;
 	}
 

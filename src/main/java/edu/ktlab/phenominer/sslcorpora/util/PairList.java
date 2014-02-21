@@ -25,4 +25,8 @@ public class PairList<T1, T2> {
 				t1s.add(pair.first);
 		return t1s;
 	}
+	
+	public int size() {
+		return list.size();
+	}
 }

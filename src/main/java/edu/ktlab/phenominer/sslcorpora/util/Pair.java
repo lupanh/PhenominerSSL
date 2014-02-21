@@ -51,6 +51,7 @@ public class Pair<T1, T2> implements Comparable<Pair<T1, T2>> {
 		return "(" + first + "," + second + ")[" + label + "]";
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -88,6 +89,7 @@ public class Pair<T1, T2> implements Comparable<Pair<T1, T2>> {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	public int compareTo(Pair<T1, T2> another) {
 		int comp = ((Comparable<T1>) first()).compareTo(another.first());
 		if (comp != 0) {
