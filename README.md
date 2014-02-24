@@ -1,4 +1,4 @@
 PhenominerSSL
 =============
 
-Semi-supervised Phenominer NER Dataset
+Semi-supervised Phenominer Named Entity Recognition Dataset

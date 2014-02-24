@@ -192,6 +192,12 @@ public class FileHelper {
 		return getBufferedOutputStreamWriter(new FileOutputStream(file), cs);
 	}
 
+	public static BufferedWriter getBufferedFileAppend(File file, Charset cs) throws FileNotFoundException {
+		if (file == null)
+			throw new NullPointerException();
+		return getBufferedOutputStreamWriter(new FileOutputStream(file, true), cs);
+	}
+
 	public static BufferedWriter getBufferedOutputStreamWriter(OutputStream os, Charset cs) throws FileNotFoundException {
 		try {
 			return new BufferedWriter(new OutputStreamWriter(os, cs.name()));
@@ -379,6 +385,13 @@ public class FileHelper {
 	 */
 	public static String[] readFromFile(String filename) {
 		return readFromFile(new File(filename));
+	}
+
+	public static boolean appendToFile(String content, File file, Charset cs) throws IOException {
+		Writer w = getBufferedFileAppend(file, cs);
+		w.write(content);
+		w.close();
+		return true;
 	}
 
 	/**
