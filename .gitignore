@@ -12,4 +12,4 @@ corpus/
 *.jar
 *.war
 *.ear
-
+*.txt
