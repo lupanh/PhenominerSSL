@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,13 +18,12 @@ import org.obolibrary.oboformat.parser.OBOFormatConstants.OboFormatTag;
 
 import edu.ktlab.phenominer.sslcorpora.matching.LongestMatching;
 import edu.ktlab.phenominer.sslcorpora.matching.Span;
+import edu.ktlab.phenominer.sslcorpora.nlp.splitter.SentenceSplitter;
+import edu.ktlab.phenominer.sslcorpora.nlp.tokenizer.Tokenizer;
 import edu.ktlab.phenominer.sslcorpora.ontology.OBOParser;
 import edu.ktlab.phenominer.sslcorpora.util.FileHelper;
 import edu.ktlab.phenominer.sslcorpora.util.Pair;
 import edu.ktlab.phenominer.sslcorpora.util.PairList;
-import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.process.CoreLabelTokenFactory;
-import edu.stanford.nlp.process.PTBTokenizer;
 
 public class HPODatasetGenerating {
 	static String Pubmed2HPO = "data/mapping/pubmed2hpo.13.02.14.txt";
@@ -107,7 +105,6 @@ public class HPODatasetGenerating {
 		return terms;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	static void taggingPubmedFile(File pubmedFile) throws Exception {
 		String pubmedID = pubmedFile.getName();
 		System.out.println(pubmedID);
@@ -117,36 +114,21 @@ public class HPODatasetGenerating {
 
 		int countSpans = 0;
 		String taggedContent = "";
-		for (String sentence : content.split("\n")) {
+		String[] sentences = SentenceSplitter.getInstance().split(content);
+		for (String sentence : sentences) {
 			if (sentence.trim().length() == 0)
 				continue;
-			PTBTokenizer tokenizer = new PTBTokenizer(new StringReader(sentence), new CoreLabelTokenFactory(), "");
-			List<String> tokens = new ArrayList<String>();
-			for (CoreLabel label; tokenizer.hasNext();) {
-				label = (CoreLabel) tokenizer.next();
-				tokens.add(label.originalText());
-			}
-			String[] tokensArr = tokens.toArray(new String[tokens.size()]);
+			String[] tokens = Tokenizer.getInstance().tokenize(sentence);
 
-			Span[] spans = matching.tagging(tokensArr, -1, true);
-			String annotated = Span.getStringAnnotated(spans, tokensArr);
+			Span[] spans = matching.tagging(tokens, -1, true);
+			String annotated = Span.getStringAnnotated(spans, tokens);
 
 			countSpans += spans.length;
 			taggedContent += annotated + "\n";
 		}
 
 		if (countSpans != 0)
-			FileHelper.writeToFile(normalize(taggedContent), new File(folderOutput + "/" + pubmedID), Charset.forName("UTF-8"));
-	}
-
-	static String normalize(String text) {
-		text = text.replace("-LRB-", "(");
-		text = text.replace("-RRB-", ")");
-		text = text.replace("-LSB-", "[");
-		text = text.replace("-RSB-", "]");
-		text = text.replace("-LCB-", "{");
-		text = text.replace("-RCB-", "}");
-		return text;
+			FileHelper.writeToFile(taggedContent, new File(folderOutput + "/" + pubmedID), Charset.forName("UTF-8"));
 	}
 
 	public static void main(String[] args) throws Exception {
