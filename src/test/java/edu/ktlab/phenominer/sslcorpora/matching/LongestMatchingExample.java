@@ -3,7 +3,7 @@ package edu.ktlab.phenominer.sslcorpora.matching;
 import java.util.HashMap;
 
 import edu.ktlab.phenominer.sslcorpora.matching.LongestMatching;
-import edu.ktlab.phenominer.sslcorpora.matching.Span;
+import edu.ktlab.phenominer.sslcorpora.matching.BioSpan;
 
 public class LongestMatchingExample {
 	public static HashMap<String, String> dict = new HashMap<String, String>();
@@ -16,8 +16,8 @@ public class LongestMatchingExample {
 		String sentence = "Abnormal kidney is a phenotype entity";
 		String tokens[] = sentence.split("[^\\w]+");
 		LongestMatching matching = new LongestMatching(dict);
-		Span[] spans = matching.tagging(tokens, -1, true);
-		System.out.println(Span.getStringAnnotated(spans, tokens));
+		BioSpan[] spans = matching.tagging(tokens, -1, true);
+		System.out.println(BioSpan.getStringAnnotated(spans, tokens));
 	}
 
 }

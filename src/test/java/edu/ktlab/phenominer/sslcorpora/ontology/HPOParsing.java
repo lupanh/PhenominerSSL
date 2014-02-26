@@ -24,10 +24,15 @@ public class HPOParsing {
 				continue;
 			System.out.println(frame.getId());
 			System.out.println(frame.getTagValue(OboFormatTag.TAG_NAME));
-			Iterator<Clause> cls = frame.getClauses(OboFormatTag.TAG_SYNONYM).iterator();
-			while (cls.hasNext()) {
-				Clause cl = cls.next();
-				System.out.println("Synonym: " + cl.getValue());
+			Iterator<Clause> syns = frame.getClauses(OboFormatTag.TAG_SYNONYM).iterator();
+			while (syns.hasNext()) {
+				Clause syn = syns.next();
+				System.out.println("Synonym: " + syn.getValue());
+			}
+			Iterator<Clause> parent = frame.getClauses(OboFormatTag.TAG_IS_A).iterator();
+			while (parent.hasNext()) {
+				Clause pr = parent.next();
+				System.out.println("Parent: " + pr.getValue());
 			}
 			System.out.println("=========================");
 		}

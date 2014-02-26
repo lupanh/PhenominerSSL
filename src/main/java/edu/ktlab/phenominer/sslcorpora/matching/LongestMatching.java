@@ -15,8 +15,8 @@ public class LongestMatching {
 		this.dictionary = dictionary;
 	}
 
-	public Span[] tagging(String[] sentence, int max_key_size, boolean caseSensitive) {
-		ArrayList<Span> names = new ArrayList<Span>();
+	public BioSpan[] tagging(String[] sentence, int max_key_size, boolean caseSensitive) {
+		ArrayList<BioSpan> names = new ArrayList<BioSpan>();
 
 		int N = sentence.length;
 		if (max_key_size == -1) {
@@ -36,7 +36,7 @@ public class LongestMatching {
 					tag = (String) dictionary.get(literal);
 
 				if (tag != null) {
-					Span token = new Span(i, j, tag);
+					BioSpan token = new BioSpan(i, j, tag);
 					names.add(token);
 					i = j;
 					tagged = true;
@@ -49,7 +49,7 @@ public class LongestMatching {
 			}
 		}
 
-		return names.toArray(new Span[names.size()]);
+		return names.toArray(new BioSpan[names.size()]);
 	}
 
 	private static String join(String[] sentence, String separator) {

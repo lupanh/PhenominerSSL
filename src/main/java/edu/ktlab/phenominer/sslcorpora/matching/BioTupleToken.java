@@ -6,20 +6,20 @@ package edu.ktlab.phenominer.sslcorpora.matching;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TupleToken {
+public class BioTupleToken {
 	String[] tokens;
-	Map<String, Span[]> annotation = new HashMap<String, Span[]>();
+	Map<String, BioSpan[]> annotation = new HashMap<String, BioSpan[]>();
 
-	public TupleToken(String[] tokens) {
+	public BioTupleToken(String[] tokens) {
 		this.tokens = tokens;
 	}
 
-	public TupleToken(String[] tokens, Map<String, Span[]> annotation) {
+	public BioTupleToken(String[] tokens, Map<String, BioSpan[]> annotation) {
 		this.tokens = tokens;
 		this.annotation = annotation;
 	}
 
-	public void put(String label, Span[] tagged) {
+	public void put(String label, BioSpan[] tagged) {
 		annotation.put(label, tagged);
 	}
 
@@ -31,11 +31,11 @@ public class TupleToken {
 		this.tokens = tokens;
 	}
 
-	public Map<String, Span[]> getAnnotation() {
+	public Map<String, BioSpan[]> getAnnotation() {
 		return annotation;
 	}
 
-	public void setAnnotation(Map<String, Span[]> annotation) {
+	public void setAnnotation(Map<String, BioSpan[]> annotation) {
 		this.annotation = annotation;
 	}
 }

@@ -17,7 +17,7 @@ import org.obolibrary.oboformat.model.OBODoc;
 import org.obolibrary.oboformat.parser.OBOFormatConstants.OboFormatTag;
 
 import edu.ktlab.phenominer.sslcorpora.matching.LongestMatching;
-import edu.ktlab.phenominer.sslcorpora.matching.Span;
+import edu.ktlab.phenominer.sslcorpora.matching.BioSpan;
 import edu.ktlab.phenominer.sslcorpora.nlp.splitter.SentenceSplitter;
 import edu.ktlab.phenominer.sslcorpora.nlp.tokenizer.Tokenizer;
 import edu.ktlab.phenominer.sslcorpora.ontology.OBOParser;
@@ -120,8 +120,8 @@ public class HPODatasetGenerating {
 				continue;
 			String[] tokens = Tokenizer.getInstance().tokenize(sentence);
 
-			Span[] spans = matching.tagging(tokens, -1, true);
-			String annotated = Span.getStringAnnotated(spans, tokens);
+			BioSpan[] spans = matching.tagging(tokens, -1, true);
+			String annotated = BioSpan.getStringAnnotated(spans, tokens);
 
 			countSpans += spans.length;
 			taggedContent += annotated + "\n";
