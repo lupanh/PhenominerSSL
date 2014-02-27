@@ -8,8 +8,7 @@ target/
 docs/
 bin/
 corpus/
+*.txt
 # Package Files #
-*.jar
 *.war
 *.ear
-*.txt
