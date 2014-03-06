@@ -13,7 +13,8 @@ import opennlp.tools.util.PlainTextByLineStream;
 
 public class POSTaggerSampleStream extends FilterObjectStream<String, POSSample> {
 
-	private static Logger logger = Logger.getLogger(POSTaggerSampleStream.class.getName());
+	private static Logger logger = Logger.getLogger(POSTaggerSampleStream.class
+			.getName());
 
 	public POSTaggerSampleStream(Reader sentences) throws IOException {
 		super(new PlainTextByLineStream(sentences));
@@ -34,7 +35,8 @@ public class POSTaggerSampleStream extends FilterObjectStream<String, POSSample>
 			} catch (InvalidFormatException e) {
 
 				if (logger.isLoggable(Level.WARNING)) {
-					logger.warning("Error during parsing, ignoring sentence: " + sentence);
+					logger.warning("Error during parsing, ignoring sentence: "
+							+ sentence);
 				}
 
 				sample = new POSTaggerSampleExtend(new String[] {}, new String[] {});

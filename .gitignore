@@ -9,6 +9,7 @@ docs/
 bin/
 corpus/
 *.txt
+*.model
 # Package Files #
 *.war
 *.ear

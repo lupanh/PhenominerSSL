@@ -121,7 +121,7 @@ public class HPODatasetGenerating {
 			String[] tokens = Tokenizer.getInstance().tokenize(sentence);
 
 			BioSpan[] spans = matching.tagging(tokens, -1, true);
-			String annotated = BioSpan.getStringAnnotated(spans, tokens);
+			String annotated = BioSpan.getStringNameSample(spans, tokens);
 
 			countSpans += spans.length;
 			taggedContent += annotated + "\n";

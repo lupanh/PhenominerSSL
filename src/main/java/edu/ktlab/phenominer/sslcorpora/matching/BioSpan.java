@@ -43,6 +43,19 @@ public class BioSpan extends Span {
 		return chunks;
 	}
 
+	public static String getStringNameSample(Span[] spans, String[] tokens) {
+		String[] chunks = tokens;
+		StringBuffer cb = new StringBuffer();
+		for (int si = 0, sl = spans.length; si < sl; si++) {
+			chunks[spans[si].getStart()] = "<START:" + spans[si].getType() + "> " + chunks[spans[si].getStart()];
+			chunks[spans[si].getEnd() - 1] = chunks[spans[si].getEnd() - 1] + " <END>";
+		}
+
+		for (int i = 0; i < chunks.length; i++)
+			cb.append(chunks[i] + " ");
+		return cb.substring(0, cb.length() - 1);
+	}
+	
 	public static String getStringAnnotated(Span[] spans, String[] tokens) {
 		String[] chunks = tokens;
 		StringBuffer cb = new StringBuffer();
