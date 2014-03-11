@@ -59,8 +59,11 @@ public class ApproximateFMeasure {
 		String out = "";
 		for (String key : labels) {
 			out += "=============" + key + "=============\n";
-			out += "Precision: " + Double.toString(getPrecisionScore(key)) + "\n" + "Recall: " + Double.toString(getRecallScore(key))
-					+ "\n" + "F-Measure: " + Double.toString(getFMeasure(key)) + "\n";
+			out += "Precision: " + Double.toString(getPrecisionScore(key)) 
+					+ "\t(" + mapResult.get(key + "_TP") + "/" + mapResult.get(key + "_PRD") + ")\n" 
+					+ "Recall: " + Double.toString(getRecallScore(key)) 
+					+ "\t(" + mapResult.get(key + "_TP") + "/" + mapResult.get(key + "_TAG") + ")\n"
+					+ "F-Measure: "	+ Double.toString(getFMeasure(key)) + "\n";
 		}
 		return out;
 	}

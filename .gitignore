@@ -8,6 +8,7 @@ target/
 docs/
 bin/
 corpus/
+temp/
 *.txt
 *.model
 # Package Files #

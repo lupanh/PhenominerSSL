@@ -38,8 +38,8 @@ public class OpenNLPNERExample1 {
 	
 	public static void main(String[] args) throws Exception {
 		OpenNLPNER tester = new OpenNLPNER(createFeatureGenerator());
-		tester.trainNER("data/phenominer/phenominerssl2014.5000.bf.corpus", "models/phenominer/phenominerssl2014.5000.bf.model", 100, 2);
-		tester.evaluatebyApproximateMatching("data/phenominer/phenominer2012.bf.corpus", "models/phenominer/phenominerssl2014.5000.bf.model");
+		//tester.trainNER("data/phenominer/10folds/phenominer2012.bf.fold1.train", "models/phenominer/phenominer2012.bf.fold1.model", 100, 1);
+		tester.evaluatebyApproximateMatching("data/phenominer/phenominer2013.bf.corpus", "models/phenominer/phenominerssl2014.5000.bf.model");
 		//tester.recognize("data/phenominer/phenominer2012.full.corpus", "models/phenominer/phenominer2012.full.model");
 		//tester.nFoldEvaluate("data/phenominer/phenominer2012.bf.corpus", 10, 100, 1);
 	}
